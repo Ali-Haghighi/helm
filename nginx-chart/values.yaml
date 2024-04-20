@@ -8,10 +8,7 @@ image:
 service:
   type: LoadBalancer
   port: 80
-  # Optionally, you can specify externalIPs if needed
-  # externalIPs:
-  #   - 192.168.1.100
-  #   - 192.168.1.101
+
 
 ingress:
   enabled: false
