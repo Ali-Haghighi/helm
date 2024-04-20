@@ -1,0 +1,53 @@
+replicaCount: 3
+
+image:
+  repository: nginx
+  tag: stable
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  port: 80
+  # Optionally, you can specify externalIPs if needed
+  # externalIPs:
+  #   - 192.168.1.100
+  #   - 192.168.1.101
+
+ingress:
+  enabled: false
+  annotations: {}
+  # Define ingress host and paths if enabled
+  # hosts:
+  #   - host: example.com
+  #     paths:
+  #       - /
+  # tls:
+  #   - secretName: my-tls-secret
+  #     hosts:
+  #       - example.com
+
+resources: {}
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 50m
+  #   memory: 64Mi
+
+nodeSelector: {}
+
+serviceAccount:
+  create: true
+  # Other service account configurations, if any
+
+autoscaling:
+  enabled: true
+  minReplicas: 1  # Set the minimum number of replicas
+  maxReplicas: 5  # Set the maximum number of replicas
+  targetCPUUtilizationPercentage: 80  # Set the target CPU utilization percentage for autoscaling
+
+
+tolerations: []
+
+affinity: {}
+
